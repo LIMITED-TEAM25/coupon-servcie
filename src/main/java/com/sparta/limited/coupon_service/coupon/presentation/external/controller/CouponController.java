@@ -1,5 +1,6 @@
 package com.sparta.limited.coupon_service.coupon.presentation.external.controller;
 
+import com.sparta.limited.common_module.common.aop.RoleCheck;
 import com.sparta.limited.coupon_service.coupon.application.dto.request.CouponCreateRequest;
 import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponCreateResponse;
 import com.sparta.limited.coupon_service.coupon.application.service.CouponService;
@@ -18,6 +19,7 @@ public class CouponController {
 
     private final CouponService couponService;
 
+    @RoleCheck("ROLE_ADMIN")
     @PostMapping()
     public ResponseEntity<CouponCreateResponse> createCoupon(
         @RequestBody CouponCreateRequest request
