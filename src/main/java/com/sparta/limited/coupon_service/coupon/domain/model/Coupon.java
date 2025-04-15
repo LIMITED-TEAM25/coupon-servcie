@@ -31,15 +31,22 @@ public class Coupon extends BaseEntity {
     @Column(name = "status", nullable = false)
     private CouponStatus status;
 
-    private Coupon(Integer discountRate, CouponStatus status) {
+    private Coupon(
+        String name,
+        Integer discountRate
+    ) {
+        this.name = name;
         this.discountRate = discountRate;
-        this.status = status;
+        this.status = CouponStatus.ACTIVE;
     }
 
-    public static Coupon of(Integer discountRate, CouponStatus status) {
+    public static Coupon of(
+        String name,
+        Integer discountRate
+    ) {
         return new Coupon(
-            discountRate,
-            status
+            name,
+            discountRate
         );
     }
 
