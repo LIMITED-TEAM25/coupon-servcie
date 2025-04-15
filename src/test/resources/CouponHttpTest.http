@@ -1,10 +1,19 @@
-### GET request to example server
+### 쿠폰 생성 (ADMIN) 성공
 POST http://localhost:19098/api/v1/coupons
 Content-Type: application/json
+X-User-Role: ROLE_ADMIN
 
 {
-  "name": "test",
+  "name": "test1",
   "discountRate": 10
 }
 
-###
+### 쿠폰 생성 (USER) 실패
+POST http://localhost:19098/api/v1/coupons
+Content-Type: application/json
+X-User-Role: ROLE_USER
+
+{
+  "name": "test1",
+  "discountRate": 10
+}
