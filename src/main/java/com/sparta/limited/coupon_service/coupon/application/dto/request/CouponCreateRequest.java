@@ -7,5 +7,6 @@ public class CouponCreateRequest {
 
     private String name;
     private Integer discountRate;
+    private Long quantity;
 
 }

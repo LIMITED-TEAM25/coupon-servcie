@@ -11,7 +11,8 @@ public class CouponMapper {
     ) {
         return Coupon.of(
             request.getName(),
-            request.getDiscountRate()
+            request.getDiscountRate(),
+            request.getQuantity()
         );
     }
 
@@ -22,6 +23,7 @@ public class CouponMapper {
             coupon.getId(),
             coupon.getName(),
             coupon.getDiscountRate(),
+            coupon.getQuantity(),
             coupon.getStatus()
         );
     }
