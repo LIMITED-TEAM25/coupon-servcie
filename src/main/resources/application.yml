@@ -1,0 +1,12 @@
+spring:
+  config:
+    import:
+      - optional:file:.env[.properties]
+      - classpath:properties/database.yml
+      - classpath:properties/jpa.yml
+      - classpath:properties/eureka-client.yml
+  application:
+    name: coupon-service
+
+server:
+  port: 19098
