@@ -10,17 +10,20 @@ public class CouponCreateResponse {
     private final UUID id;
     private final String name;
     private final Integer discountRate;
+    private final Long quantity;
     private final CouponStatus status;
 
     private CouponCreateResponse(
         UUID id,
         String name,
         Integer discountRate,
+        Long quantity,
         CouponStatus status
     ) {
         this.id = id;
         this.name = name;
         this.discountRate = discountRate;
+        this.quantity = quantity;
         this.status = status;
     }
 
@@ -28,12 +31,14 @@ public class CouponCreateResponse {
         UUID id,
         String name,
         Integer discountRate,
+        Long quantity,
         CouponStatus status
     ) {
         return new CouponCreateResponse(
             id,
             name,
             discountRate,
+            quantity,
             status
         );
     }
