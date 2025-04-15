@@ -1,0 +1,10 @@
+### GET request to example server
+POST http://localhost:19098/api/v1/coupons
+Content-Type: application/json
+
+{
+  "name": "test",
+  "discountRate": 10
+}
+
+###
