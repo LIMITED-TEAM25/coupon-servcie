@@ -24,4 +24,11 @@ public class CouponRepositoryImpl implements CouponRepository {
         return jpaCouponRepository.findById(couponId)
             .orElseThrow(() -> new CouponNotFoundException(couponId));
     }
+
+    @Override
+    public Coupon findByIdWithLock(UUID couponId) {
+        return jpaCouponRepository.findByIdWithLock(couponId)
+            .orElseThrow(() -> new CouponNotFoundException(couponId));
+    }
+
 }
