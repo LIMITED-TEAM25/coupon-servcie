@@ -30,7 +30,7 @@ public class CouponService {
     public void decreaseQuantity(
         UUID couponId
     ) {
-        Coupon coupon = couponRepository.findById(couponId);
+        Coupon coupon = couponRepository.findByIdWithLock(couponId);
         coupon.decreaseQuantity();
     }
 
