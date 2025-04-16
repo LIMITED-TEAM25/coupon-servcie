@@ -2,6 +2,7 @@ package com.sparta.limited.coupon_service.coupon.application.mapper;
 
 import com.sparta.limited.coupon_service.coupon.application.dto.request.CouponCreateRequest;
 import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponCreateResponse;
+import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponReadOneResponse;
 import com.sparta.limited.coupon_service.coupon.domain.model.Coupon;
 
 public class CouponMapper {
@@ -25,6 +26,18 @@ public class CouponMapper {
             coupon.getDiscountRate(),
             coupon.getQuantity(),
             coupon.getStatus()
+        );
+    }
+
+    public static CouponReadOneResponse toReadOneResponse(
+        Coupon coupon
+    ) {
+        return CouponReadOneResponse.of(
+            coupon.getId(),
+            coupon.getName(),
+            coupon.getDiscountRate(),
+            coupon.getStatus(),
+            coupon.getQuantity()
         );
     }
 }

@@ -19,3 +19,7 @@ X-User-Role: ROLE_USER
   "discountRate": 10,
   "quantity": 1
 }
+
+### 쿠폰 단일 조회
+GET http://localhost:19098/api/v1/coupons/dfad90d9-46d1-4eb0-9c2a-01dc9e4a56d2
+Content-Type: application/json
