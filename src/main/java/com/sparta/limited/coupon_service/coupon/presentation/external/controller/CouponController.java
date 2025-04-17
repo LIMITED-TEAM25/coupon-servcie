@@ -5,9 +5,9 @@ import com.sparta.limited.coupon_service.coupon.application.dto.request.CouponCr
 import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponCreateResponse;
 import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponReadOneResponse;
 import com.sparta.limited.coupon_service.coupon.application.service.CouponService;
+import java.net.URI;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +30,11 @@ public class CouponController {
         @RequestBody CouponCreateRequest request
     ) {
         CouponCreateResponse response = couponService.createCoupon(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+            .path("/api/v1/coupons/{couponId}")
+            .buildAndExpand(response.getId())
+            .toUri();
+        return ResponseEntity.created(uri).body(response);
     }
 
     @GetMapping("/{couponId}")
