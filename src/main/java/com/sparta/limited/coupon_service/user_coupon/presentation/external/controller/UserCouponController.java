@@ -2,6 +2,7 @@ package com.sparta.limited.coupon_service.user_coupon.presentation.external.cont
 
 import com.sparta.limited.coupon_service.user_coupon.application.dto.response.UserCouponCreateResponse;
 import com.sparta.limited.coupon_service.user_coupon.application.service.UserCouponService;
+import java.net.URI;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +27,10 @@ public class UserCouponController {
         @PathVariable(name = "couponId") UUID couponId
     ) {
         UserCouponCreateResponse response = userCouponService.creatUserCoupon(couponId, userId);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+            .path("/api/v1/user-coupons/{userCouponId}")
+            .buildAndExpand(response.getUserCouponId())
+            .toUri();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
