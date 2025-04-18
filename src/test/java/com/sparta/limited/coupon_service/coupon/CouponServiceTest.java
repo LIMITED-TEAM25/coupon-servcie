@@ -91,4 +91,13 @@ public class CouponServiceTest {
         assertEquals(quantity, couponReadOneResponse.getQuantity());
     }
 
+    @Test
+    @DisplayName("쿠폰 재고 감소 서비스 테스트")
+    void decreaseQuantityTest() {
+        couponService.decreaseQuantity(couponId);
+        Coupon coupon = couponRepository.findById(couponId);
+
+        assertEquals(coupon.getQuantity(), quantity - 1);
+    }
+
 }
