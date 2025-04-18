@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.ResultActions;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestConstructor(autowireMode = AutowireMode.ALL)
-@DisplayName("API:Coupon")
+@DisplayName("쿠폰 : 컨트롤러 테스트")
 public class CouponControllerTest {
 
     private final MockMvc mockMvc;
