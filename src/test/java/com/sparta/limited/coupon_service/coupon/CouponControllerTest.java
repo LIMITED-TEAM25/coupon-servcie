@@ -3,16 +3,15 @@ package com.sparta.limited.coupon_service.coupon;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.limited.coupon_service.coupon.application.dto.request.CouponCreateRequest;
-import com.sparta.limited.coupon_service.coupon.presentation.external.controller.CouponController;
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestConstructor;
@@ -21,7 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 @SpringBootTest
-@WebMvcTest(controllers = CouponController.class)
 @AutoConfigureMockMvc
 @TestConstructor(autowireMode = AutowireMode.ALL)
 @DisplayName("API:Coupon")
@@ -54,6 +52,9 @@ public class CouponControllerTest {
 
         resultActions.andDo(print())
             .andExpect(status().isCreated())
+            .andExpect(jsonPath("name").value(couponCreateRequest.getName()))
+            .andExpect(jsonPath("discountRate").value(couponCreateRequest.getDiscountRate()))
+            .andExpect(jsonPath("quantity").value(couponCreateRequest.getQuantity()))
             .andExpect(header().exists(HttpHeaders.LOCATION));
     }
 
