@@ -1,4 +1,4 @@
-package com.sparta.limited.coupon_service.coupon;
+package com.sparta.limited.coupon_service.user_coupon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

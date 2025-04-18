@@ -10,5 +10,3 @@ spring:
       - classpath:properties/jpa.yml
       - classpath:properties/database.yml
       - classpath:properties/eureka-client.yml
-  profiles:
-    active: local
