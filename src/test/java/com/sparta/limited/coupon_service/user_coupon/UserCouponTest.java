@@ -17,7 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
+@ActiveProfiles("test")
 @SpringBootTest
 public class UserCouponTest {
 
@@ -32,7 +34,7 @@ public class UserCouponTest {
     @BeforeEach
     void setUpCoupon() {
         Coupon coupon = Coupon.of(
-            "테스트용 쿠폰",
+            "동시성 테스트용 쿠폰",
             1,
             couponQuantity
         );
