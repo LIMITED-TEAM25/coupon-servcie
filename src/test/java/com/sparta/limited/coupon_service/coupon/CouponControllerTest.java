@@ -59,7 +59,7 @@ public class CouponControllerTest {
     @BeforeEach
     void setUp() {
         Coupon coupon = Coupon.of(
-            "테스트용 쿠폰",
+            "컨트롤러 테스트용 쿠폰",
             10,
             10L
         );
@@ -80,7 +80,7 @@ public class CouponControllerTest {
     void createCoupon() throws Exception {
 
         CouponCreateRequest couponCreateRequest = CouponCreateRequest.of(
-            "테스트 쿠폰 생성",
+            "쿠폰 생성 테스트용 쿠폰",
             10,
             10L
         );
