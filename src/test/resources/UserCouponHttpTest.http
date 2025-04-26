@@ -1,0 +1,6 @@
+### 사용자 쿠폰 발급
+POST http://localhost:19098/api/v1/user-coupons/dfad90d9-46d1-4eb0-9c2a-01dc9e4a56d2
+Content-Type: application/json
+X-User-Id: 1
+
+###
