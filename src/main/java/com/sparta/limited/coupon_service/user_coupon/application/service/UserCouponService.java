@@ -3,11 +3,12 @@ package com.sparta.limited.coupon_service.user_coupon.application.service;
 import com.sparta.limited.coupon_service.user_coupon.application.dto.response.UserCouponCreateResponse;
 import com.sparta.limited.coupon_service.user_coupon.application.mapper.UserCouponMapper;
 import com.sparta.limited.coupon_service.user_coupon.application.service.coupon.CouponFacade;
+import com.sparta.limited.coupon_service.user_coupon.domain.exception.UserCouponDuplicatedException;
 import com.sparta.limited.coupon_service.user_coupon.domain.model.UserCoupon;
 import com.sparta.limited.coupon_service.user_coupon.domain.repository.UserCouponRepository;
-import com.sparta.limited.coupon_service.user_coupon.domain.validator.UserCouponDuplicateValidator;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,13 +24,14 @@ public class UserCouponService {
         UUID couponId,
         Long userId
     ) {
-        boolean isDuplicated = userCouponRepository.existsByUserIdAndCouponId(userId, couponId);
-        UserCouponDuplicateValidator.duplicateValidate(isDuplicated, userId, couponId);
+        UserCoupon userCoupon = UserCouponMapper.toEntity(couponId, userId);
+        try {
+            userCouponRepository.save(userCoupon);
+        } catch (DataIntegrityViolationException e) {
+            throw new UserCouponDuplicatedException(userId, couponId);
+        }
 
         couponFacade.decreaseQuantity(couponId);
-
-        UserCoupon userCoupon = UserCouponMapper.toEntity(couponId, userId);
-        userCouponRepository.save(userCoupon);
 
         return UserCouponMapper.toCreateResponse(userCoupon);
     }

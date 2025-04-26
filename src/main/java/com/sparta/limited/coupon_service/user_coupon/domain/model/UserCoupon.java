@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import java.util.UUID;
 import lombok.AccessLevel;
@@ -15,7 +16,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "p_user_coupon")
+@Table(
+    name = "p_user_coupon",
+    indexes = {
+        @Index(
+            name = "idx_p_user_coupon_userid_couponid",
+            columnList = "user_id, coupon_id",
+            unique = true
+        )})
 public class UserCoupon extends BaseEntity {
 
     @Id
