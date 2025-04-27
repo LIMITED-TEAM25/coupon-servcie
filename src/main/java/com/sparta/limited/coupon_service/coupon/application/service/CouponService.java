@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CouponService {
 
     private final CouponRepository couponRepository;
+    private final RedisQuantityService redisQuantityService;
 
     @Transactional
     public CouponCreateResponse createCoupon(
@@ -23,6 +24,7 @@ public class CouponService {
     ) {
         Coupon coupon = CouponMapper.toEntity(request);
         couponRepository.save(coupon);
+        redisQuantityService.cachingQuantity(coupon.getId(), coupon.getQuantity());
         return CouponMapper.toCreateResponse(coupon);
     }
 
