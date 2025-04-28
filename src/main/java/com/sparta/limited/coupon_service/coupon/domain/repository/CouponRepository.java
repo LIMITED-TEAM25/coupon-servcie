@@ -9,6 +9,5 @@ public interface CouponRepository {
 
     Coupon findById(UUID couponId);
 
-    Coupon findByIdWithLock(UUID couponId);
-
+    void decrementQuantity(UUID couponId);
 }
