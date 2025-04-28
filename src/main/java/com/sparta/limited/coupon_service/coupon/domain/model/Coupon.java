@@ -1,7 +1,6 @@
 package com.sparta.limited.coupon_service.coupon.domain.model;
 
 import com.sparta.limited.common_module.common.BaseEntity;
-import com.sparta.limited.coupon_service.coupon.domain.exception.CouponOutOfStockException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -58,10 +57,4 @@ public class Coupon extends BaseEntity {
         );
     }
 
-    public void decreaseQuantity() {
-        if (quantity <= 0) {
-            throw new CouponOutOfStockException(id);
-        }
-        this.quantity--;
-    }
 }
