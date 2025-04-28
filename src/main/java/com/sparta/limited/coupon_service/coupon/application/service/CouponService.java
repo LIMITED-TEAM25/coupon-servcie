@@ -25,6 +25,7 @@ public class CouponService {
         Coupon coupon = CouponMapper.toEntity(request);
         couponRepository.save(coupon);
         redisQuantityService.cachingQuantity(coupon.getId(), coupon.getQuantity());
+        redisQuantityService.warmupUserCouponCreate(coupon.getId());
         return CouponMapper.toCreateResponse(coupon);
     }
 
@@ -32,8 +33,7 @@ public class CouponService {
     public void decreaseQuantity(
         UUID couponId
     ) {
-        Coupon coupon = couponRepository.findByIdWithLock(couponId);
-        coupon.decreaseQuantity();
+        couponRepository.decrementQuantity(couponId);
     }
 
     @Transactional(readOnly = true)
