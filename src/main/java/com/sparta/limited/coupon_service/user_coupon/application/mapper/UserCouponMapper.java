@@ -1,6 +1,5 @@
 package com.sparta.limited.coupon_service.user_coupon.application.mapper;
 
-import com.sparta.limited.coupon_service.user_coupon.application.dto.response.UserCouponCreateResponse;
 import com.sparta.limited.coupon_service.user_coupon.domain.model.UserCoupon;
 import java.util.UUID;
 
@@ -16,14 +15,4 @@ public class UserCouponMapper {
         );
     }
 
-    public static UserCouponCreateResponse toCreateResponse(
-        UserCoupon userCoupon
-    ) {
-        return UserCouponCreateResponse.of(
-            userCoupon.getId(),
-            userCoupon.getCouponId(),
-            userCoupon.getUserId(),
-            userCoupon.getStatus()
-        );
-    }
 }
