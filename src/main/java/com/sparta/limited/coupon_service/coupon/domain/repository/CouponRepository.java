@@ -8,6 +8,4 @@ public interface CouponRepository {
     void save(Coupon coupon);
 
     Coupon findById(UUID couponId);
-
-    void decrementQuantity(UUID couponId);
 }
