@@ -1,4 +1,4 @@
--- KEYS[1]=coupon:{id}:stock, KEYS[2]=coupon:{id}:users, ARGV[1]=userId
+-- KEYS[1]=coupon:{id}:quantity, KEYS[2]=coupon:{id}:users, ARGV[1]=userId
 local remain = redis.call("DECR", KEYS[1])
 if not remain or remain < 0 then
   redis.call("INCR", KEYS[1])
