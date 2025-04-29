@@ -33,7 +33,8 @@ public class CouponService {
     public void decreaseQuantity(
         UUID couponId
     ) {
-        couponRepository.decrementQuantity(couponId);
+        Coupon coupon = couponRepository.findById(couponId);
+        coupon.decreaseQuantity();
     }
 
     @Transactional(readOnly = true)
