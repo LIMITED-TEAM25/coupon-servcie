@@ -1,7 +1,6 @@
 package com.sparta.limited.coupon_service.user_coupon.presentation.external.controller;
 
 import com.sparta.limited.common_module.common.annotation.CurrentUserId;
-import com.sparta.limited.coupon_service.user_coupon.application.dto.response.UserCouponCreateResponse;
 import com.sparta.limited.coupon_service.user_coupon.application.service.UserCouponService;
 import java.net.URI;
 import java.util.UUID;
@@ -21,15 +20,15 @@ public class UserCouponController {
     private final UserCouponService userCouponService;
 
     @PostMapping("/{couponId}")
-    public ResponseEntity<UserCouponCreateResponse> createUserCoupon(
+    public ResponseEntity<String> createUserCoupon(
         @CurrentUserId Long userId,
         @PathVariable(name = "couponId") UUID couponId
     ) {
-        UserCouponCreateResponse response = userCouponService.creatUserCoupon(couponId, userId);
+        UUID userCouponId = userCouponService.creatUserCoupon(couponId, userId);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
             .path("/api/v1/user-coupons/{userCouponId}")
-            .buildAndExpand(response.getUserCouponId())
+            .buildAndExpand(userCouponId)
             .toUri();
-        return ResponseEntity.created(uri).body(response);
+        return ResponseEntity.created(uri).body("쿠폰 발급 완료");
     }
 }
