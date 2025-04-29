@@ -17,6 +17,8 @@ public class RedisCouponIssueService {
     private static final String DUPLICATED = "DUPLICATED";
     private static final String KEY_QUANTITY = "coupon:%s:quantity";
     private static final String KEY_DUPLICATE = "coupon:%s:users";
+    private static final String QUEUE_KEY_USERS = "user-coupon:queue";
+    private static final String QUEUE_KEY_QUANTITY = "coupon-quantity-decrease:queue";
     private final DefaultRedisScript<String> stockAndDupScript;
     private final StringRedisTemplate redisTemplate;
 
@@ -35,6 +37,20 @@ public class RedisCouponIssueService {
         if (result.equals(DUPLICATED)) {
             throw new UserCouponDuplicatedException(userId, couponId);
         }
+    }
+
+    public void userCouponCreateEvent(
+        UUID couponId,
+        Long userId
+    ) {
+        String payload = couponId + "|" + userId;
+        redisTemplate.opsForList().rightPush(QUEUE_KEY_USERS, payload);
+    }
+
+    public void decreaseCouponQuantityEvent(
+        UUID couponId
+    ) {
+        redisTemplate.opsForList().rightPush(QUEUE_KEY_QUANTITY, couponId.toString());
     }
 
 }
