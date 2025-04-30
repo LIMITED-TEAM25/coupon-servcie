@@ -64,4 +64,5 @@ public class Coupon extends BaseEntity {
         }
         this.quantity--;
     }
+
 }

@@ -1,0 +1,27 @@
+spring:
+  config.activate.on-profile: local
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
+---
+
+spring:
+  config.activate.on-profile: test
+  data:
+    redis:
+      host: ${TEST_REDIS_HOST}
+      port: ${TEST_REDIS_PORT}
+      password: ${TEST_REDIS_PASSWORD}
+
+---
+
+spring:
+  config.activate.on-profile: docker
+  data:
+    redis:
+      host: ${DOCKER_REDIS_HOST}
+      port: ${DOCKER_REDIS_PORT}
+      password: ${DOCKER_REDIS_PASSWORD}

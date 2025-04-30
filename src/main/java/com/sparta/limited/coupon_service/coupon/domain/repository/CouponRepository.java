@@ -8,7 +8,4 @@ public interface CouponRepository {
     void save(Coupon coupon);
 
     Coupon findById(UUID couponId);
-
-    Coupon findByIdWithLock(UUID couponId);
-
 }

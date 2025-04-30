@@ -1,7 +1,7 @@
 services:
   coupon-service:
     container_name: coupon-service
-    image: chokyuseong/coupon-service:latest
+    image: chokyuseong/coupon-service:scheduler
     env_file:
       - .env
     build:
