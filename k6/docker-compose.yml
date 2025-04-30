@@ -1,0 +1,15 @@
+services:
+  k6:
+    image: grafana/k6:latest
+    restart: always
+    volumes:
+      - ./scenario:/scripts
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: [ "sh", "/entrypoint.sh" ]
+    tty: true
+    networks:
+      - limited-team25
+
+networks:
+  limited-team25:
+    external: true
