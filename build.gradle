@@ -36,7 +36,7 @@ ext {
 
 dependencies {
     // common-module
-    implementation 'com.sparta.limited:common-module:1.4.1'
+    implementation 'com.sparta.limited:common-module:1.4.6'
 
     // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -49,7 +49,7 @@ dependencies {
 
     // OpenFeign
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    
+
     // Redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
