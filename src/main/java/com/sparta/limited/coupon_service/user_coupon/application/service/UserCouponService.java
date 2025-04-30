@@ -1,6 +1,5 @@
 package com.sparta.limited.coupon_service.user_coupon.application.service;
 
-import com.sparta.limited.coupon_service.user_coupon.application.mapper.UserCouponMapper;
 import com.sparta.limited.coupon_service.user_coupon.domain.model.UserCoupon;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class UserCouponService {
         UUID couponId,
         Long userId
     ) {
-        UserCoupon userCoupon = UserCouponMapper.toEntity(couponId, userId);
+        UserCoupon userCoupon = UserCoupon.of(couponId, userId);
 
         redisCouponIssueService.quantityAndDuplicate(userCoupon.getCouponId(),
             userCoupon.getUserId());
@@ -28,6 +27,6 @@ public class UserCouponService {
 
         redisCouponIssueService.decreaseCouponQuantityEvent(userCoupon.getCouponId());
 
-        return userCoupon.getCouponId();
+        return userCoupon.getId();
     }
 }
