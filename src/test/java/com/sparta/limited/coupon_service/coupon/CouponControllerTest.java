@@ -8,11 +8,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.limited.coupon_service.coupon.application.dto.request.CouponCreateRequest;
-import com.sparta.limited.coupon_service.coupon.domain.model.Coupon;
-import com.sparta.limited.coupon_service.coupon.domain.model.CouponStatus;
-import com.sparta.limited.coupon_service.coupon.domain.repository.CouponRepository;
-import com.sparta.limited.coupon_service.coupon.infrastructure.persistence.JpaCouponRepository;
+import com.sparta.limited.coupon_service.application.dto.request.CouponCreateRequest;
+import com.sparta.limited.coupon_service.domain.model.Coupon;
+import com.sparta.limited.coupon_service.domain.model.CouponStatus;
+import com.sparta.limited.coupon_service.domain.repository.CouponRepository;
+import com.sparta.limited.coupon_service.infrastructure.persistence.JpaCouponRepository;
 import java.util.UUID;
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.AfterEach;
