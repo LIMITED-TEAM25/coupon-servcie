@@ -2,13 +2,13 @@ package com.sparta.limited.coupon_service.coupon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.sparta.limited.coupon_service.coupon.application.dto.request.CouponCreateRequest;
-import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponCreateResponse;
-import com.sparta.limited.coupon_service.coupon.application.dto.response.CouponReadOneResponse;
-import com.sparta.limited.coupon_service.coupon.application.service.CouponService;
-import com.sparta.limited.coupon_service.coupon.domain.model.Coupon;
-import com.sparta.limited.coupon_service.coupon.domain.repository.CouponRepository;
-import com.sparta.limited.coupon_service.coupon.infrastructure.persistence.JpaCouponRepository;
+import com.sparta.limited.coupon_service.application.dto.request.CouponCreateRequest;
+import com.sparta.limited.coupon_service.application.dto.response.CouponCreateResponse;
+import com.sparta.limited.coupon_service.application.dto.response.CouponReadOneResponse;
+import com.sparta.limited.coupon_service.application.service.CouponService;
+import com.sparta.limited.coupon_service.domain.model.Coupon;
+import com.sparta.limited.coupon_service.domain.repository.CouponRepository;
+import com.sparta.limited.coupon_service.infrastructure.persistence.JpaCouponRepository;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
