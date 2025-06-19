@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.sparta.limited.coupon_service.application.dto.request.CouponCreateRequest;
 import com.sparta.limited.coupon_service.application.dto.response.CouponCreateResponse;
 import com.sparta.limited.coupon_service.application.dto.response.CouponReadOneResponse;
-import com.sparta.limited.coupon_service.application.service.CouponService;
+import com.sparta.limited.coupon_service.application.service.CouponServiceImpl;
 import com.sparta.limited.coupon_service.domain.model.Coupon;
 import com.sparta.limited.coupon_service.domain.repository.CouponRepository;
 import com.sparta.limited.coupon_service.infrastructure.persistence.JpaCouponRepository;
@@ -32,7 +32,7 @@ public class CouponServiceTest {
     private CouponRepository couponRepository;
 
     @Autowired
-    private CouponService couponService;
+    private CouponServiceImpl couponService;
 
     @Autowired
     private JpaCouponRepository jpaCouponRepository;
