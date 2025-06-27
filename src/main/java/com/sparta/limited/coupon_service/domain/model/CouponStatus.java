@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum CouponStatus {
-    ACTIVE("쿠폰 활성화"),
-    CLOSED("쿠폰 종료");
+    ACTIVE("유요한 쿠폰"),
+    CLOSED("만료된 쿠폰");
 
     private final String description;
 
